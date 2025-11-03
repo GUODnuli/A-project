@@ -1,0 +1,43 @@
+# Godot 4 project .gitignore
+
+# --- 编辑器和引擎生成的文件 ---
+.godot/
+.import/
+*.import
+*.ctex
+*.md5
+
+# --- 编辑器用户配置（每个开发者本地不同） ---
+.godot/editor/
+.godot/project_metadata.cfg
+.godot/favorites
+.godot/recent_dirs
+.godot/script_editor_cache.cfg
+.godot/filesystem_cache*
+.godot/editor_layout.cfg
+.godot/editor_script_doc_cache.res
+.godot/editor_script_doc_cache.res-*.cfg
+
+# --- 场景和脚本的编辑状态缓存 ---
+*.tscn-editstate-*.cfg
+*.tscn-folding-*.cfg
+*.gd-folding-*.cfg
+
+# --- UID 缓存（Godot 4 使用 .uid 文件）---
+*.uid
+
+# --- 着色器和渲染缓存（平台相关，体积大）---
+.godot/shader_cache/
+
+# --- 导出和构建产物（按需添加）---
+# 如果你有导出模板或构建脚本生成的文件，可以取消注释以下行：
+# *.pck
+# *.exe
+# *.x86_64
+# builds/
+# export/
+
+# --- 其他通用忽略 ---
+.DS_Store
+Thumbs.db
+desktop.ini
