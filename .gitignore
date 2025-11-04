@@ -6,6 +6,7 @@
 *.import
 *.ctex
 *.md5
+.vscode/
 
 # --- 编辑器用户配置（每个开发者本地不同） ---
 .godot/editor/
