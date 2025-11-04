@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csyawq7p2fpl0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n8j3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyhl2"]
+metallic = 1.0
+roughness = 0.0
+
+[node name="Glass" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("PlaneMesh_n8j3y")
+surface_material_override/0 = SubResource("StandardMaterial3D_pyhl2")

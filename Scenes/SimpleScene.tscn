@@ -1,3 +1,38 @@
-[gd_scene format=3 uid="uid://kntsprkymyog"]
+[gd_scene load_steps=8 format=3 uid="uid://kntsprkymyog"]
+
+[ext_resource type="PackedScene" uid="uid://csyawq7p2fpl0" path="res://Scenes/Glass.tscn" id="1_f6kox"]
+[ext_resource type="PackedScene" uid="uid://b230ua12r7uy8" path="res://FPSController/FPSController.tscn" id="2_dh0h2"]
+
+[sub_resource type="Environment" id="Environment_dh0h2"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xyxly"]
+
+[sub_resource type="Compositor" id="Compositor_2kxnn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnoio"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f6kox"]
 
 [node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dh0h2")
+camera_attributes = SubResource("CameraAttributesPractical_xyxly")
+compositor = SubResource("Compositor_2kxnn")
+
+[node name="PlayGround" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayGround"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+mesh = SubResource("PlaneMesh_lnoio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayGround"]
+shape = SubResource("WorldBoundaryShape3D_f6kox")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.18909548, 0.87725383, -0.44121268, 0, 0.44931898, 0.8933714, 0.9819587, -0.1689325, 0.08496419, -40.889114, 68.53921, 0)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_dh0h2")]
+transform = Transform3D(0.074352115, 0, -0.9972321, 0, 1, 0, 0.9972321, 0, 0.074352115, 4.9041805, 2.3841858e-07, 0.45523667)
+
+[node name="Glass" parent="." instance=ExtResource("1_f6kox")]
