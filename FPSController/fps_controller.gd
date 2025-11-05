@@ -2,6 +2,11 @@ extends CharacterBody3D
 
 @export var look_sensitivity : float = 0.006
 @export var jump_velocity := 6
+@export var auto_bhop := true
+@export var walk_speed := 7.0
+@export var run_speed := 11.0
+
+var wish_dir := Vector3.ZERO
 
 func _ready():
 	for child in %WorldModel.find_children("*", "VisualInstance3D"):
@@ -25,3 +30,10 @@ func _physics_process(float):
 
 func _process(float):
 	pass
+
+func _handle_air_physics(delta) -> void:
+	pass
+
+func _handle_ground_physics(delta) -> void:
+	var input_dir := Input.get_vector("left", "right", "up", "down").normalized()
+	wish_dir = self.global_transform.basis * Vector3(-input_dir.x, 0, -input_dir.y)
