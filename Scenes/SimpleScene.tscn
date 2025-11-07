@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kntsprkymyog"]
+[gd_scene load_steps=14 format=3 uid="uid://kntsprkymyog"]
 
-[ext_resource type="PackedScene" uid="uid://csyawq7p2fpl0" path="res://Scenes/Glass.tscn" id="1_f6kox"]
 [ext_resource type="PackedScene" uid="uid://b230ua12r7uy8" path="res://FPSController/FPSController.tscn" id="2_dh0h2"]
+[ext_resource type="Material" uid="uid://0bttvhf7k3pa" path="res://Assets/Material3D/standard_material_3d_1.tres" id="2_xyxly"]
+[ext_resource type="Material" uid="uid://brgpodcsb46mj" path="res://Assets/Material3D/standard_material_3d_2.tres" id="3_2kxnn"]
+[ext_resource type="Material" uid="uid://c5jy4e6wqjylm" path="res://Assets/Material3D/standard_material_3d_3.tres" id="3_rx13d"]
 
 [sub_resource type="Environment" id="Environment_dh0h2"]
 
@@ -9,9 +11,19 @@
 
 [sub_resource type="Compositor" id="Compositor_2kxnn"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dh0h2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx13d"]
+albedo_color = Color(0.7058824, 1, 1, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_lnoio"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f6kox"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xyxly"]
+material = ExtResource("3_rx13d")
+
+[sub_resource type="Skin" id="Skin_f6eii"]
 
 [node name="World" type="Node3D"]
 
@@ -21,9 +33,11 @@ camera_attributes = SubResource("CameraAttributesPractical_xyxly")
 compositor = SubResource("Compositor_2kxnn")
 
 [node name="PlayGround" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_dh0h2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayGround"]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rx13d")
 mesh = SubResource("PlaneMesh_lnoio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayGround"]
@@ -35,5 +49,26 @@ transform = Transform3D(0.18909548, 0.87725383, -0.44121268, 0, 0.44931898, 0.89
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_dh0h2")]
 transform = Transform3D(0.074352115, 0, -0.9972321, 0, 1, 0, 0.9972321, 0, 0.074352115, 4.9041805, 2.3841858e-07, 0.45523667)
 
-[node name="Glass" parent="." instance=ExtResource("1_f6kox")]
-transform = Transform3D(-0.99984676, 0, 0.017504664, 0, 1, 0, -0.017504664, 0, -0.99984676, 0, 0, 0)
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(5.555, 0, 0, 0, 5.555, 0, 0, 0, 5.555, -17.090553, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+material_override = ExtResource("2_xyxly")
+mesh = SubResource("CylinderMesh_xyxly")
+skin = SubResource("Skin_f6eii")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(5.555, 0, 0, 0, 5.555, 0, 0, 0, 5.555, -3.1541634, 0, 19.367819)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
+material_override = ExtResource("3_2kxnn")
+mesh = SubResource("CylinderMesh_xyxly")
+skin = SubResource("Skin_f6eii")
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(5.555, 0, 0, 0, 5.555, 0, 0, 0, 5.555, 9.755747, 0, -15.142576)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3"]
+material_override = ExtResource("3_2kxnn")
+mesh = SubResource("CylinderMesh_xyxly")
+skin = SubResource("Skin_f6eii")

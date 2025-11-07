@@ -48,6 +48,10 @@ run={
 ]
 }
 
+[physics]
+
+3d/default_gravity=9.799999999999995
+
 [rendering]
 
 environment/screen_space_reflection/roughness_quality=2
